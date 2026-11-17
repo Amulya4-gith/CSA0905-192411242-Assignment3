@@ -1,0 +1,6 @@
+counter size after each event (P = put, T = take):
+  P=1 T=0 P=1 P=2 P=3 P=4 P=5 T=4 P=5 T=4
+  P=5 T=4 P=5 T=4 P=5 T=4 P=5 T=4 P=5 T=4
+  P=5 T=4 P=5 T=4 P=5 T=4 P=5 T=4 P=5 T=4
+  P=5 T=4 P=5 T=4 P=5 T=4 T=3 T=2 T=1 T=0
+smallest size seen = 0, largest size seen = 5, events = 40

@@ -1,0 +1,40 @@
+== good input: all three versions ==
+manual (no finally)    completed                        handles still open: 0 (max at once 2)
+manual (finally)       completed                        handles still open: 0 (max at once 2)
+try-with-resources     completed                        handles still open: 0 (max at once 2)
+reports identical: true
+data/store1.csv,350.0
+data/store2.csv,815.0
+data/store4.csv,190.0
+TOTAL,1355.0
+
+== bad input (store3.csv line 3 is corrupt) ==
+manual (no finally)    FAILED with NumberFormatException handles still open: 2 (max at once 2)
+manual (finally)       FAILED with NumberFormatException handles still open: 0 (max at once 2)
+Nov 16, 2026 11:55:21 AM ReportDemo withResources
+SEVERE: Failed while reading data/store3.csv: java.lang.NumberFormatException: For input string: "abc"
+try-with-resources     FAILED with NumberFormatException handles still open: 0 (max at once 2)
+
+== step trace of the leaking version on the bad input ==
+    opened trace.csv -> open handles = 1
+    opened data/store1.csv -> open handles = 2
+    closed data/store1.csv -> open handles = 1
+    opened data/store2.csv -> open handles = 2
+    closed data/store2.csv -> open handles = 1
+    opened data/store3.csv -> open handles = 2
+    exception: java.lang.NumberFormatException: For input string: "abc"
+    open handles after failure = 2
+
+== partial report left by the failed leaky run ==
+(file is empty: buffered data was never flushed)
+-- partial report left by try-with-resources --
+data/store1.csv,350.0
+data/store2.csv,815.0
+
+== closing order and suppressed exceptions ==
+opening A
+opening B
+closing B
+closing A
+caught: body failed
+suppressed: close failed for B

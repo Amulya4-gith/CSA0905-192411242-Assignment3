@@ -1,0 +1,31 @@
+== correctness on the 10,000-file set ==
+succeeded 9503 (expected 9503), failed 497, lost 0, succeeded + failed + lost = 10000
+failure reasons found    : {bad student id=76, empty file=73, file missing=200, malformed line=75, mark out of range=73}
+failure reasons injected : {bad student id=76, empty file=73, file missing=200, malformed line=75, mark out of range=73}
+sum of all totals: 2375615 (expected 2375615)
+
+== pool size vs time, 10,000 files, local disk (best of 5, ms) ==
+pool  1 :   177.7 ms
+pool  2 :    71.7 ms
+pool  4 :    77.0 ms
+pool  8 :    78.3 ms
+pool 16 :    88.0 ms
+pool 64 :    74.8 ms
+
+== pool size vs time with a simulated 1 ms wait per file (network share), one run each (ms) ==
+pool  1 :    11532 ms   (succeeded 9503, failed 497)
+pool  2 :     5758 ms   (succeeded 9503, failed 497)
+pool  4 :     2863 ms   (succeeded 9503, failed 497)
+pool  8 :     1463 ms   (succeeded 9503, failed 497)
+pool 16 :      748 ms   (succeeded 9503, failed 497)
+pool 64 :      222 ms   (succeeded 9503, failed 497)
+
+== alternative 1: files.parallelStream() ==
+local disk        :    133.1 ms, succeeded 9503, failed 497
+1 ms simulated wait:   5702.1 ms, succeeded 9503, failed 497
+common pool parallelism = 1, cores = 1
+without a catch inside the lambda: run stopped after 6 of 10000 files with file missing
+
+== alternative 2: one thread per file ==
+local disk        :    997.8 ms, succeeded 9503, failed 497, peak live threads 54, peak RSS grew by 3 MB
+1 ms simulated wait:    815.7 ms, succeeded 9503, failed 497, peak live threads 60, peak RSS grew by 0 MB

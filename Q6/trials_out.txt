@@ -1,0 +1,10 @@
+outcome over 30 runs each (1 cook, 2 students, capacity 5, 200 tokens per cook)
+while + notifyAll (the design in TokenCounter)             {ok=30}
+if + notifyAll                                             {count out of range=25, ok=5}
+
+outcome over 30 runs each (3 cooks, 3 students, capacity 1, 200 tokens per cook)
+while + notifyAll                                          {ok=30}
+while + notify (single wake-up)                            {HANG=30}
+
+outcome over 30 runs each (1 cook, 2 students, capacity 5)
+while + notify (single wake-up), one producer              {ok=30}

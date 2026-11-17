@@ -1,0 +1,10 @@
+== ScanDemo runnable
+alive right after start(): true true true true
+alive after join():        false false false false
+finish order: S4 S3 S1 S2
+total scanned: 400
+== ScanDemo thread
+alive right after start(): true true true true
+alive after join():        false false false false
+finish order: S2 S4 S1 S3
+total scanned: 400

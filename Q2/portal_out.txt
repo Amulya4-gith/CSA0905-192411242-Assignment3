@@ -1,0 +1,22 @@
+Note: ExcBench.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+    [storage] wrote answer01.pdf
+S1 ACCEPTED: answer01.pdf
+S2 ExamClosedException -> student sees: "Window closed at 2026-11-20T12:00"
+S3 NotRegisteredException -> student sees: "192499999 is not registered for CSA0905"
+S4 FileTooLargeException -> student sees: "800 KB is over the 500 KB limit"
+S5 SubmissionStorageException -> student sees: "Your answer could not be saved, please retry"  [logged cause: java.io.IOException: Input/output error on volume D:]
+
+--- full chained stack trace of S5 ---
+SubmissionStorageException: Your answer could not be saved, please retry
+	at Store.write(PortalDemo.java:23)
+	at SubmissionService.submit(PortalDemo.java:42)
+	at PortalDemo.main(PortalDemo.java:70)
+Caused by: java.io.IOException: Input/output error on volume D:
+	at Store.write(PortalDemo.java:20)
+	... 2 more
+
+--- same failure, re-thrown WITHOUT the cause ---
+getCause() = null
+ExamException: Your answer could not be saved, please retry
+	at PortalDemo.main(PortalDemo.java:76)

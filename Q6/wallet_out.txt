@@ -1,0 +1,17 @@
+== Student B: a pair of transfers that deadlocks ==
+after 600 ms: t1 alive = true, t2 alive = true
+findDeadlockedThreads() found 2 threads
+  Transfer-1 (A to B) is BLOCKED, wants a lock owned by Transfer-2 (B to A)
+  Transfer-2 (B to A) is BLOCKED, wants a lock owned by Transfer-1 (A to B)
+balances unchanged: A = 1000, B = 1000
+
+== same two transfers with lock ordering ==
+finished: true, C = 950, D = 1050, total = 2000
+
+== random transfers, no pause, 4 threads x 5000 transfers among 4 wallets, 20 trials ==
+unordered locking: deadlocked in 20 of 20 trials
+ordered locking: deadlocked in 0 of 20 trials
+
+== cost per transfer: 4 threads x 50,000 transfers among 10 wallets (ns, best of 5) ==
+ordered synchronized       74 ns per transfer   (retries in last run: 0)
+tryLock + retry            71 ns per transfer   (retries in last run: 1)

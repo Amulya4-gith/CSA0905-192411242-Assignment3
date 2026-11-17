@@ -1,0 +1,11 @@
+-- Student A: trying to reproduce the double booking (unsynchronized) --
+1. plain threads, no gap, no barrier                 runs with sales != 10:  0/20   largest count: 10   average: 10.0
+2. all 100 threads released together (barrier)       runs with sales != 10:  0/20   largest count: 10   average: 10.0
+3. barrier + Thread.yield() between check and update runs with sales != 10: 17/20   largest count: 29   average: 12.3
+4. barrier + sleep(1 ms) between check and update    runs with sales != 10: 20/20   largest count: 100   average: 51.5
+
+-- synchronized versions with the same widened gap (barrier + sleep 1 ms) --
+synchronized method                                  runs with sales != 10:  0/20   largest count: 10   average: 10.0
+synchronized block                                   runs with sales != 10:  0/20   largest count: 10   average: 10.0
+synchronized method, barrier + yield                 runs with sales != 10:  0/50   largest count: 10   average: 10.0
+synchronized block, barrier + yield                  runs with sales != 10:  0/50   largest count: 10   average: 10.0

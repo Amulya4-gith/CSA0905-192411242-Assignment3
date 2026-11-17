@@ -1,0 +1,3 @@
+expected total       : 400000
+instance-lock result : 20004   (lost 379996)
+class-lock result    : 400000   (lost 0)

@@ -1,0 +1,11 @@
+depth | stack trace on | cause | ns per throw+catch | bytes allocated
+   10 | no             | no    |                233 | 40
+   10 | yes            | no    |                738 | 728
+   10 | yes            | yes   |               1490 | 1456
+   50 | no             | no    |               1282 | 40
+   50 | yes            | no    |               3083 | 1416
+   50 | yes            | yes   |               4793 | 2832
+  200 | no             | no    |               5521 | 40
+  200 | yes            | no    |              10912 | 4856
+  200 | yes            | yes   |              16649 | 9712
+error code return, depth 10: 9.0793454 ns (-20000000)

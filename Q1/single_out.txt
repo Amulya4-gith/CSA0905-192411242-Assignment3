@@ -1,0 +1,3 @@
+Dispensing 500
+Something went wrong for [abc] -> NumberFormatException
+Something went wrong for [null] -> NumberFormatException

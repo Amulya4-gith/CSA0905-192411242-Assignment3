@@ -1,0 +1,6 @@
+*.class
+out/
+Q3/many/
+Q7/scores/
+Q7/hand/
+card.txt

@@ -1,0 +1,12 @@
+n = 200 tasks of 10 ms each (ideal time = n/p x 10 ms)
+pool size p | measured (ms) | ideal (ms)
+          1 |          2038 | 2000
+          2 |          1017 | 1000
+          4 |           508 | 500
+          8 |           255 | 250
+         16 |           133 | 130
+         50 |            47 | 40
+one new Thread per task (200 threads): 19 ms
+
+thread cost: 5000 trivial tasks
+5000 new Threads: 171.8 ms;  pool of 4: 1.2 ms

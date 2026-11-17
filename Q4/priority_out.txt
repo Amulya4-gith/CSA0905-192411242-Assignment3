@@ -1,0 +1,12 @@
+equal priorities (5,5,5,5), CPU-bound stations:
+  run 1: S4 S2 S1 S3
+  run 2: S1 S2 S3 S4
+  run 3: S4 S3 S2 S1
+  run 4: S1 S4 S2 S3
+  run 5: S2 S3 S4 S1
+S1=1, S2=3, S3=7, S4=10:
+  run 1: S2 S3 S1 S4
+  run 2: S2 S1 S3 S4
+  run 3: S3 S2 S4 S1
+  run 4: S1 S2 S3 S4
+  run 5: S4 S3 S1 S2

@@ -1,0 +1,5 @@
+run 1: finish order: S1 S3 S2 S4
+run 2: finish order: S1 S4 S3 S2
+run 3: finish order: S2 S4 S1 S3
+run 4: finish order: S4 S1 S2 S3
+run 5: finish order: S1 S3 S2 S4

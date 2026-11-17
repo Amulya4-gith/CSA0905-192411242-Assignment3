@@ -1,0 +1,7 @@
+calling a.run():
+  job runs on thread: main
+  state of Station-A after run(): NEW
+calling b.start():
+  job runs on thread: Station-B
+  state of Station-B after join(): TERMINATED
+second start() -> IllegalThreadStateException

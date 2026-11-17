@@ -1,0 +1,18 @@
+-- 10,000 booking attempts, 1000 seats, pure critical section (time in microseconds, best of 5) --
+strategy              | 1 thread | 4 threads | 8 threads
+synchronized method   |      361 |       377 |       363
+synchronized block    |      437 |       424 |       603
+AtomicBoolean[] CAS   |      137 |       250 |       355
+ReentrantLock         |      350 |       365 |       329
+ConcurrentHashMap     |      852 |       643 |       644
+
+-- 10,000 bookings, 8 threads, with 50 us of non-critical work per booking (ms, best of 3) --
+lock whole method: yes   -> 1146 ms
+lock whole method: no (block) -> 142 ms
+
+-- extra space for s = 100,000 seats (bytes allocated to build the structure) --
+synchronized method   | empty:    100032 | all seats booked:    100032
+synchronized block    | empty:    100056 | all seats booked:    100056
+AtomicBoolean[] CAS   | empty:   2000032 | all seats booked:   2000032
+ReentrantLock         | empty:    100088 | all seats booked:    100088
+ConcurrentHashMap     | empty:        80 | all seats booked:   6895808

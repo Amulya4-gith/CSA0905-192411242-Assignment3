@@ -1,0 +1,24 @@
+== first run, without a duplicate check ==
+hand count: 5 valid files, 8 failures (empty, bad id, mark 101, missing, directory, invalid bytes, duplicate, four subjects)
+program   : 6 succeeded, 7 failed  ->  DOES NOT MATCH
+
+== after adding the duplicate pass ==
+program   : 5 succeeded, 8 failed  ->  matches
+succeeded + failed = 13 of 13 files
+
+results (hand-calculated total and grade in brackets):
+  f01.txt STU00001 total 350 grade B   [350 B]  ok
+  f02.txt STU00002 total 500 grade A   [500 A]  ok
+  f03.txt STU00003 total 0 grade F   [0 F]  ok
+  f04.txt STU00004 total 225 grade C   [225 C]  ok
+  f05.txt STU00005 total 375 grade A   [375 A]  ok
+failures:
+  f06.txt -> empty file
+  f07.txt -> bad student id
+  f08.txt -> mark out of range
+  f09.txt -> file missing
+  f10.txt -> unreadable file
+  f11.txt -> unreadable file
+  f12.txt -> duplicate student id
+  f13.txt -> wrong number of subjects
+failure reasons: {bad student id=1, duplicate student id=1, empty file=1, file missing=1, mark out of range=1, unreadable file=2, wrong number of subjects=1}

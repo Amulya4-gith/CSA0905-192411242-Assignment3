@@ -1,0 +1,3 @@
+S4 isDaemon = true
+S1 (normal) finished its batch
+main() ends now; S4 isAlive = true

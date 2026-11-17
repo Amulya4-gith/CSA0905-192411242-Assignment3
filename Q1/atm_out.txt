@@ -1,0 +1,9 @@
+ID  | catch block entered         | finally     | outcome
+T1  | none                        | finally ran | Rs 2000 dispensed to AMULYA
+T2  | NumberFormatException       | finally ran | Bad input: For input string: "10O1"
+T3  | IllegalArgumentException    | finally ran | Amount must be positive: -300
+T4  | InsufficientFundsException  | finally ran | Balance 3000 is less than 9000
+T5  | FileNotFoundException       | finally ran | Card reader file missing
+T6  | NoSuchElementException      | finally ran | Bad input: No account 9999
+T7  | NumberFormatException       | finally ran | Bad input: For input string: "abc"
+Final balance of 1001 = 3000

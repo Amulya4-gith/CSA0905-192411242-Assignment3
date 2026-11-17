@@ -1,0 +1,12 @@
+-- error-code style ATM, same seven inputs --
+1001 / 2000 -> dispensed
+10O1 / 500 -> bad account
+1001 / -300 -> negative amount
+1001 / 9000 -> insufficient
+9999 / 100 -> no account
+1001 / abc -> bad amount
+-- cost per call (ns), median of 5 runs --
+valid input, exception style            9
+valid input, error code                 9
+invalid input, exception thrown       722
+invalid input, error code               6
